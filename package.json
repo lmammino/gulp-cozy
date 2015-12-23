@@ -1,0 +1,39 @@
+{
+  "name": "gulp-cozy",
+  "version": "0.0.0",
+  "description": "Manage your gulp tasks in a cozier way",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/xo/cli.js && ./node_modules/tape/bin/tape tests/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmammino/gulp-cozy.git"
+  },
+  "keywords": [
+    "gulp",
+    "dependencies",
+    "tasks",
+    "automation",
+    "organization",
+    "cozy",
+    "cozier"
+  ],
+  "author": "Luciano Mammino <lucianomammino@gmail.com> (http://loige.co/)",
+  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/lmammino/gulp-cozy/blob/master/LICENSE"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/lmammino/gulp-cozy/issues"
+  },
+  "homepage": "https://github.com/lmammino/gulp-cozy#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "tape": "^4.3.0",
+    "xo": "^0.12.1"
+  }
+}
