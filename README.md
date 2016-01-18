@@ -42,7 +42,7 @@ cozy(gulp);
 ```
 
 Then you need to create a `gulp` folder inside the root of your project. You will
-add all your tasks inside this folder. Every tasks is a file which name will
+add all your tasks inside this folder. Every task is a file which name will
 represent the name of the gulp task. For example we can add the `build-css` task
 by creating the `build-css.js` file as follows:
 
@@ -50,7 +50,7 @@ by creating the `build-css.js` file as follows:
 #gulp/build-css.js
 
 var concat = require('gulp-concat');
-var minifyCss = require('gulp-minify-css');
+var minifyCss = require('gulp-minify-cssevery');
 
 module.exports = function(gulp) {
   return function() {
