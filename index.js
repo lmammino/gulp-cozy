@@ -35,7 +35,9 @@ module.exports = function (gulp, cozyPath) {
 		var files = fs.readdirSync(cozyPath);
 		files.forEach(function (file) {
 			var taskName = file.substr(0, file.lastIndexOf('.'));
-			cozy.require(taskName, options[taskName] || {});
+			var taskOptions = options[taskName] || {};
+			var moduleName = taskOptions.moduleName || taskName;
+			cozy.require(moduleName, taskOptions);
 		});
 	}
 
