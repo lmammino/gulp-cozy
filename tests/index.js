@@ -11,3 +11,11 @@ test('it should include assert module as a task', function (t) {
 	t.ok(gulp.hasTask('assert'), 'Gulp task has been added');
 	t.ok(gulp.start('assert'), 'Gulp task has been executed correctly');
 });
+
+test('it should include assert module as a task indirectly', function (t) {
+	t.plan(3);
+	cozy({anotherAssert: {moduleName: 'assert'}});
+	t.ok(gulp.hasTask('assert'), 'Gulp task has been added');
+	t.ok(gulp.hasTask('anotherAssert'), 'Gulp task has been added');
+	t.ok(gulp.start('anotherAssert'), 'Gulp task has been executed correctly');
+});

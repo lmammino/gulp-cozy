@@ -34,19 +34,26 @@ module.exports = function (gulp, cozyPath) {
 
 		var files = fs.readdirSync(cozyPath);
 		files.forEach(function (file) {
-			var taskName = file.substr(0, file.lastIndexOf('.'));
-			cozy.require(taskName, options[taskName] || {});
+			var moduleName = file.substr(0, file.lastIndexOf('.'));
+			if (!options[moduleName]) {
+				options[moduleName] = {};
+			}
+		});
+		Object.keys(options).forEach(function (taskName) {
+			var taskOptions = options[taskName];
+			cozy.require(taskOptions.moduleName || taskName, taskName, taskOptions);
 		});
 	}
 
 	/**
 	 * Require a specific task from the current cozyPath. If the task is not present in the cozyPath it will try to
 	 * fall back to a regular module from the `node_modules` folder.
-	 * @param {String} taskName - the name of the task to require
+	 * @param {String} moduleName - the name of the module to require
+	 * @param {String} taskName - the name of the task to register
 	 * @param {Object} taskOptions - an optional configuration object to be passed to the task factory function
 	 */
-	cozy.require = function (taskName, taskOptions) {
-		var taskPath = path.join(cozyPath, taskName);
+	cozy.require = function (moduleName, taskName, taskOptions) {
+		var taskPath = path.join(cozyPath, moduleName);
 
 		var task;
 		try {
@@ -56,7 +63,7 @@ module.exports = function (gulp, cozyPath) {
 				throw e;
 			}
 
-			task = require(taskName);
+			task = require(moduleName);
 		}
 
 		if (task instanceof Function) {
